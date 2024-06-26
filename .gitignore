@@ -1,0 +1,12 @@
+
+node_modules/
+src/.vuepress/.cache/
+src/.vuepress/.temp/
+src/.vuepress/dist/
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/vampirewal/FileContentIndex/b31850c6-9c87-4041-b87e-dbf449b3a908.vsidx
+.vs/vampirewal/FileContentIndex/read.lock
+.vs/vampirewal/v17/.wsuo
+/.vs

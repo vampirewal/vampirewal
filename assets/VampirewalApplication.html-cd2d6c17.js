@@ -1,0 +1,13 @@
+import{_ as n,W as s,X as a,a1 as e}from"./framework-b2028a60.js";const p={},t=e(`<h1 id="直接使用" tabindex="-1"><a class="header-anchor" href="#直接使用" aria-hidden="true">#</a> 直接使用</h1><ul><li>找到WPF的App.xaml.cs文件，将原本继承的Application替换成VampirewalApplication</li><li>实现抽象方法即可</li></ul><div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token keyword">public</span> <span class="token keyword">partial</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">VampirewalApplication</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OnStartup</span><span class="token punctuation">(</span><span class="token class-name">StartupEventArgs</span> e<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">base</span><span class="token punctuation">.</span><span class="token function">OnStartup</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token return-type class-name">Type</span> <span class="token function">BootStartUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name">TestBootStartUp</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,3),c=[t];function l(o,i){return s(),a("div",null,c)}const u=n(p,[["render",l],["__file","VampirewalApplication.html.vue"]]);export{u as default};

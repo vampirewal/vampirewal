@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-9d9fd184","path":"/guide/VampirewalAdmin/VampirewalAdmin.html","title":"项目介绍","lang":"zh-CN","frontmatter":{"title":"项目介绍"},"headers":[],"git":{},"readingTime":{"minutes":0.15,"words":46},"filePathRelative":"guide/VampirewalAdmin/VampirewalAdmin.md","copyright":{"author":"Vampirewal","license":"MIT"}}');export{e as data};

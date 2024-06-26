@@ -1,0 +1,39 @@
+import{_ as n,W as s,X as a,a1 as e}from"./framework-b2028a60.js";const t={},p=e(`<div class="hint-container warning"><p class="hint-container-title">注意</p><ul><li>如果系统采用分层架构开发，建议将该启动类放置于ViewModel层</li><li>如果不分层开发，则放哪无所谓</li><li>主要是下文中的VampirewalApplication中需要获取该类的Type，避免在BootStartUp中需要反射获取到的程序集，加载不了</li></ul></div><div class="language-csharp line-numbers-mode" data-ext="cs"><pre class="language-csharp"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestBootStartUp</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">VampirewalBootStartUp</span></span>
+<span class="token punctuation">{</span>
+    <span class="token comment">//初始窗体的ViewKey</span>
+    <span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> FirstViewKey <span class="token operator">=&gt;</span> <span class="token string">&quot;MainView&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">protected</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">RegisterService</span><span class="token punctuation">(</span><span class="token class-name">IServiceCollection</span> services<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//第一步，需先加载配置项，避免后续需要使用的地方，获取不了配置信息</span>
+        services<span class="token punctuation">.</span><span class="token function">AddVampirewalCoreConfig</span><span class="token punctuation">(</span><span class="token interpolation-string"><span class="token string">$&quot;</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">AppDomain<span class="token punctuation">.</span>CurrentDomain<span class="token punctuation">.</span>BaseDirectory</span><span class="token punctuation">}</span></span><span class="token string">AppConfig.json&quot;</span></span><span class="token punctuation">,</span> options <span class="token operator">=&gt;</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">//options.RegisterOptions&lt;AppBaseOptions&gt;();//此处仅做案例写在这里</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">//小型程序的话，建议使用这种方式将数据库操作注册进IOC，使用原生SqlSugar的方式</span>
+        services<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddSingleton</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>IVampirewalCoreDataContext<span class="token punctuation">,</span> DataContext<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">//非小型项目建议使用这种方式将SqlSugar注册进IOC，以及下面的仓储。</span>
+        services<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">UseVampirewalCoreSqlSugar</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>testdc<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        services<span class="token punctuation">.</span><span class="token function">AddTransient</span><span class="token punctuation">(</span><span class="token keyword">typeof</span><span class="token punctuation">(</span><span class="token type-expression class-name">SqlSugarRepository<span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//自带的日志服务，可有可无，暂时没时间去完善</span>
+        services<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddSingleton</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>IVampirewalCoreLogService<span class="token punctuation">,</span> VampirewalCoreLogService<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//弹窗通知服务</span>
+        services<span class="token punctuation">.</span><span class="token function">AddVampirewalCoreDialogMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//事件工厂总线服务</span>
+        services<span class="token punctuation">.</span><span class="token function">AddVampirewalCoreEventBusFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OnAppExit</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">bool</span></span> IsRun<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//当程序退出时触发</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">override</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OnAppRun</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">bool</span></span> IsRun<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">//当程序启动时触发</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,2),o=[p];function c(i,l){return s(),a("div",null,o)}const r=n(t,[["render",c],["__file","VampirewalBootStartUp.html.vue"]]);export{r as default};

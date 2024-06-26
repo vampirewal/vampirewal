@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-ca2625c0","path":"/guide/Vampirewal_Core/Services/","title":"Services","lang":"zh-CN","frontmatter":{"title":"Services","article":false,"feed":false,"sitemap":false},"headers":[],"git":{},"readingTime":{"minutes":0.03,"words":9},"filePathRelative":null,"copyright":{"author":"Vampirewal","license":"MIT"}}');export{e as data};

@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-4d931c5a","path":"/guide/Vampirewal_Core/QuickStart.html","title":"快速开始","lang":"zh-CN","frontmatter":{"title":"快速开始"},"headers":[],"git":{},"readingTime":{"minutes":1.51,"words":453},"filePathRelative":"guide/Vampirewal_Core/QuickStart.md","copyright":{"author":"Vampirewal","license":"MIT"}}');export{e as data};

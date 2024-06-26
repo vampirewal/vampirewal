@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-6e007bcf","path":"/guide/Vampirewal_Core/UpdateLog.html","title":"更新日志","lang":"zh-CN","frontmatter":{"title":"更新日志"},"headers":[],"git":{},"readingTime":{"minutes":0.58,"words":175},"filePathRelative":"guide/Vampirewal_Core/UpdateLog.md","copyright":{"author":"Vampirewal","license":"MIT"}}');export{e as data};

@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-5078c5c0","path":"/guide/Vampirewal_Core/Vampirewal_Core.html","title":"使用前必读","lang":"zh-CN","frontmatter":{"title":"使用前必读"},"headers":[],"git":{},"readingTime":{"minutes":0.81,"words":243},"filePathRelative":"guide/Vampirewal_Core/Vampirewal_Core.md","copyright":{"author":"Vampirewal","license":"MIT"}}');export{e as data};

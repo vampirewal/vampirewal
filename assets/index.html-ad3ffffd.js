@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-2f01bd71","path":"/guide/Vampirewal_Core/","title":"Vampirewal Core","lang":"zh-CN","frontmatter":{"title":"Vampirewal Core","article":false,"feed":false,"sitemap":false},"headers":[],"git":{},"readingTime":{"minutes":0.03,"words":9},"filePathRelative":null,"copyright":{"author":"Vampirewal","license":"MIT"}}');export{e as data};

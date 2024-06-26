@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-4d63d24a","path":"/guide/Vampirewal_Core/Comments/","title":"Comments","lang":"zh-CN","frontmatter":{"title":"Comments","article":false,"feed":false,"sitemap":false},"headers":[],"git":{},"readingTime":{"minutes":0.03,"words":9},"filePathRelative":null,"copyright":{"author":"Vampirewal","license":"MIT"}}');export{e as data};
